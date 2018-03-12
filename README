@@ -1,0 +1,30 @@
+  In liniile ce urmeaza voi prezenta implementarea aleasa pentru a doua tema la
+POO -- MiniCAD.
+  Pentru rezolvarea acestei teme, am folosit o clasa abstracta Shape, ce
+implementeaza interfata Visitable, in care am definit variabilele necesare
+memorarii parametrilor fiecarei forme. De asemenea, tot in clasa Shape am denit
+o metoda ce imi genreaza un int de culoare pe baza parametrului rgb exprimat
+in hexa si a opacitatii. Astfel, clasele derivate (Canvas, Line, Circle, etc.)
+au rolul de a seta parametrii formei respective prin intermediul
+constructorului. De asemenea, fiecarei clasa derivata contine o metoda de accept
+pentru implementarea pattern-ului visitor.
+  Pentru implementarea Factory pattern am creat o interfata Factory si o clasa
+ShapeFactory ce implementeaza aceasta interfata. In ShapeFactory am creat
+o instanta final static de tipul ShapeFactory, am setat constructorul default
+pe privat si am realizat o metoda care imi returneaza un obiect in functie
+de tipul transmis ca parametru. In acest fel am realizat si implementarea
+de singleton pattern.
+  Algortimii de desenare a formelor i-am definit in clasa Algorithms, fiecare
+metoda din aceasta clasa am definit-o statica, pentru a nu fi nevoie de
+instantierea unui obiect de tip Algorithms pentru utilizarea vreunei
+functii de desenare. Mentionez ca in implementarea algoritmilor din aceasta
+clasa am folosit modelul algoritmului lui Bresenham din cerinta temei,
+modelul alg. lui Bresenham pentru desenarea cercurilor de pe geekforgeeks.org,
+si un model de implementare, folosind o coada, pentru alg. de flood-fill.
+  Clasa DrawVisitor implementeaza interfata Visitor si este practic singurul
+visitator necesar in rezolvarea acestei teme. In aceasta clasa am implementat
+metoda visit pentru fiecare tip de forma si am realizat constructia imaginii
+intr-un obiect de tip BufferedImage.
+  In clasa Main, realizez citirea parametrilor fiecarei forme, si pentru
+fiecare forma apelez motoda accept(). La final, creez imaginea in
+format png.
